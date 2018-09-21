@@ -15,6 +15,9 @@ function loadEventListeners() {
 
   //Remove task event
   taskList.addEventListener('click', removeTask);
+
+  //Cleat all tasks event
+  clearBtn.addEventListener('click', clearTasks)
 }
 
 // Add Task
@@ -51,5 +54,20 @@ function addTask(e) {
 function removeTask(e) {
  if(e.target.parentElement.classList.contains('delete-item')){
   console.log(e.target);
+  if(confirm('Are you sure you want to delete this task?')){
+    e.target.parentElement.parentElement.remove();
+  }
+  }
+  
+}
+
+//Clear all tasks
+function clearTasks(e) {
+ // taskList.innerHTML = '';
+
+ //Faster solution
+ while(taskList.firstChild){
+   taskList.removeChild(taskList.firstChild);
  }
+
 }
